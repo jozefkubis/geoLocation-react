@@ -1,19 +1,20 @@
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import { useGeolocation } from "./useGeolocation"
 
 export default function App() {
   const [countClicks, setCountClicks] = useState(0)
-  const { getPosition, isLoading, error, position } = useGeolocation()
+  const { isLoading, position, error, getPosition } = useGeolocation()
 
-  useEffect(() => {
+  function handleClick() {
+    getPosition()
     setCountClicks((count) => count + 1)
-  }, [position])
+  }
 
   const { lat, lng } = position
 
   return (
     <div>
-      <button onClick={getPosition} disabled={isLoading}>
+      <button onClick={handleClick} disabled={isLoading}>
         Get my position
       </button>
 

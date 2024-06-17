@@ -25,5 +25,5 @@ export function useGeolocation() {
     )
   }
 
-  return { position, error, isLoading, getPosition }
+  return { isLoading, position, error, getPosition }
 }
